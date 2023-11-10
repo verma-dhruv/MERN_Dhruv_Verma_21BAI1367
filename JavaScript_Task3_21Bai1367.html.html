@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <input type="number" id="number1" placeholder="Enter first number">
+    <input type="number" id="number2" placeholder="Enter second number">
+    <button onclick="multiplyNumbers()">Multiply</button>
+    <button onclick="divideNumbers()">Divide</button>
+    <p>Multiplication Result: <span id="multiplyResult"></span></p>
+    <p>Division Result: <span id="divideResult"></span></p>
+
+    <script>
+        function multiplyNumbers() {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            const result = num1 * num2;
+            document.getElementById('multiplyResult').textContent = isNaN(result) ? 'Invalid input' : result;
+        }
+
+        function divideNumbers() {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            const result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            document.getElementById('divideResult').textContent = isNaN(result) ? 'Invalid input' : result;
+        }
+    </script>
+</body>
+
+</html>

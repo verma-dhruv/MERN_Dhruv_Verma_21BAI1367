@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <style>
+        #train {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Click the following button to handle the animation</h1>
+    <button onclick="startStopTrain()">Start/Stop</button>
+    <a href='https://postimages.org/' target='_blank' id="train">
+        <img src='https://i.postimg.cc/50RW67FQ/R.png' border='0' alt='R' />
+    </a>
+
+    <script>
+        const train = document.getElementById('train');
+        let position = 0;
+        let animationId = null;
+        let isMoving = false;
+
+        function moveTrain() {
+            position += 5; // Change this value to control the speed of the train
+            train.style.left = position + 'px';
+
+            if (position < window.innerWidth && isMoving) {
+                animationId = requestAnimationFrame(moveTrain);
+            }
+        }
+
+        function startStopTrain() {
+            isMoving = !isMoving;
+
+            if (isMoving) {
+                moveTrain();
+            } else {
+                cancelAnimationFrame(animationId);
+            }
+        }
+    </script>
+</body>
+
+</html>

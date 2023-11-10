@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Order</title>
+</head>
+
+<body>
+    <input type="text" id="textInput" placeholder="Enter a string">
+    <button onclick="sortLetters()">Sort</button>
+    <p>Alphabetical Order: <span id="sortedText"></span></p>
+
+    <script>
+        function sortLetters() {
+            const input = document.getElementById('textInput').value;
+            const sorted = input.split('').sort().join('');
+            document.getElementById('sortedText').textContent = sorted;
+        }
+    </script>
+</body>
+
+</html>

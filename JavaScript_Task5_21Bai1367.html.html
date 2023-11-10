@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <form action="https://www.ethnus.com" onsubmit="return validate()">
+                <table>
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" name="name" id="1" /></td>
+                        <td><span id="s1"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="mail">Email:</label></td>
+                        <td><input type="email" name="mail" id="2" /></td>
+                        <td><span id="s2"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="website">Website:</label></td>
+                        <td><input type="url" name="website" id="3" /></td>
+                        <td><span id="s3"></span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="msg">Message:</label></td>
+                        <td><textarea name="msg" rows="5" cols="20" id="4"></textarea></td>
+                        <td><span id="s4"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <script>
+        function validate() {
+            var a = document.getElementById("1");
+            var b = document.getElementById("2");
+            var c = document.getElementById("3");
+            var d = document.getElementById("4");
+            var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var url = /^https?:\/\/[\w-]+\.[\w-]+\S*$/;
+            document.getElementById("s1").innerHTML = "";
+            document.getElementById("s2").innerHTML = "";
+            document.getElementById("s3").innerHTML = "";
+            document.getElementById("s4").innerHTML = "";
+            a.style.borderColor = "";
+            b.style.borderColor = "";
+            c.style.borderColor = "";
+            d.style.borderColor = "";
+            var isValid = true;
+            if (a.value.trim() === "") {
+                isValid = false;
+                a.style.borderColor = "red";
+                document.getElementById("s1").innerHTML = "This field is required";
+            }
+            if (b.value.trim() === "" || !b.value.match(mail)) {
+                isValid = false;
+                b.style.borderColor = "red";
+                document.getElementById("s2").innerHTML = "A valid email address is required";
+            }
+            if (c.value.trim() === "" || !c.value.match(url)) {
+                isValid = false;
+                c.style.borderColor = "red";
+                document.getElementById("s3").innerHTML = "A valid url is required";
+            }
+            if (d.value.trim() === "") {
+                isValid = false;
+                d.style.borderColor = "red";
+                document.getElementById("s4").innerHTML = "This field is required";
+            }
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>
